@@ -17,7 +17,7 @@ export default function Map() {
         height: `${pointSizePx}px`,
     };
 
-    //console.log(map.field, map.pointSizePx);
+    console.log("MAP RENDER");
     if (!field) return <h1>Configurate settings and save</h1>;
     //return <div>{JSON.stringify(map)}</div>;
 

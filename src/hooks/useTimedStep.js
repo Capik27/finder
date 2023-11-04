@@ -154,7 +154,10 @@ export default function useTimedStep() {
             console.log("victory", victory);
             console.clear();
             console.log(PL);
-            if (victory) return;
+            if (victory) {
+                setTick(0);
+                return;
+            }
             const freeIndex = rndRangedInt(0, free.length - 1);
             console.log("free", free);
             console.log("freeIndex", freeIndex);

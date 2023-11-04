@@ -14,6 +14,7 @@ import {
     setFillcoefValue,
     setMapSize,
     setWorkingValue,
+    setVictory,
 } from "../../store/configSlice";
 
 import { setPointValue } from "../../store/mapSlice";
@@ -30,6 +31,7 @@ export default function ConfigForm() {
     const dispatch = useDispatch();
     const [notGenerated, setNotGenerated] = useState(true);
     const config = useSelector((state) => state.config);
+    const isVictory = useSelector((state) => state.config.victory);
     const { size, fillcoef, speed } = config;
     const isStarted = config.working;
 
@@ -60,6 +62,7 @@ export default function ConfigForm() {
         }
         speedRef.current.value = Math.round(speedRef.current.value);
 
+        dispatch(setVictory(false));
         dispatch(setMapSize(sizeRef.current.value));
         dispatch(setFillcoefValue(coefRef.current.value));
         dispatch(setSpeed(speedRef.current.value));
@@ -135,7 +138,7 @@ export default function ConfigForm() {
             <Button
                 variant="contained"
                 color={isStarted ? "error" : "success"}
-                disabled={notGenerated}
+                disabled={notGenerated || isVictory}
                 onClick={handleClick}
             >
                 {isStarted ? "Stop" : "Start"}

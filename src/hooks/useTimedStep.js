@@ -17,13 +17,14 @@ export default function useTimedStep() {
     const [tick, setTick] = useState(0);
     // CONFIG
     const working = useSelector((state) => state.config.working);
-    //const victory = useSelector((state) => state.config.victory);
+    const win = useSelector((state) => state.config.victory);
     const speed = useSelector((state) => state.config.speed);
     //const size = useSelector((state) => state.config.size);
     const limit = useSelector((state) => state.config.limit);
     // MAP
     const field = useSelector((state) => state.map.field);
     // PLAYER
+    const PL = useSelector((state) => state.player);
     const position = useSelector((state) => state.player.position);
     const prevpos = useSelector((state) => state.player.prevpos);
     const patterns = useSelector((state) => state.player.patterns);
@@ -146,11 +147,13 @@ export default function useTimedStep() {
 
     useEffect(() => {
         (async function () {
-            if (!working) return;
+            if (!working || win) return;
             await pause(speed);
 
             const { free, full, victory } = lookAround() || {};
             console.log("victory", victory);
+            console.clear();
+            console.log(PL);
             if (victory) return;
             const freeIndex = rndRangedInt(0, free.length - 1);
             console.log("free", free);

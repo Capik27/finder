@@ -1,0 +1,9 @@
+@import "../../utils/cssVars.scss";
+
+.map{
+    display: inline-grid;
+    //grid-template-columns: repeat(auto-fit, $point_size);
+    gap: $map_gap;
+    border: 1px solid $color_blocked;
+}
+

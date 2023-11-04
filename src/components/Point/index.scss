@@ -1,0 +1,51 @@
+@import "../../utils/cssVars.scss";
+
+
+%text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.map__item{
+
+    &_empty {
+        background-color: $color_empty;
+    }
+    &_blocked {
+        background-color: $color_blocked;
+    }
+    &_player {
+        background-color: $color_empty;
+        color: $color_player;
+        @extend %text;
+        animation: pa 2s infinite alternate;
+    }
+    &_finish {
+        background-color: $color_finish;
+        color: $color_finish_text;
+        @extend %text;
+        animation: fa 3s infinite alternate;
+    }  
+}
+
+@keyframes pa {
+    from{
+        font-size: 12px;
+    }
+    to{
+        font-size: 18px;
+    }
+}
+
+@keyframes fa {
+    from{
+        color: $color_finish_text;
+    }
+    to{
+        color: $color_player;
+    }
+}
+
+ 

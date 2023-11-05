@@ -1,6 +1,7 @@
 @import "../../utils/cssVars.scss";
 
 .map{
+    position: relative;
     display: inline-grid;
     //grid-template-columns: repeat(auto-fit, $point_size);
     gap: $map_gap;

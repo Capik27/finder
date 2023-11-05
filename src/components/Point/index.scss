@@ -17,7 +17,8 @@
         background-color: $color_blocked;
     }
     &_player {
-        background-color: $color_empty;
+        position: absolute;
+        //background-color: $color_empty;
         color: $color_player;
         @extend %text;
         animation: pa 2s infinite alternate;

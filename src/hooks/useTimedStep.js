@@ -129,8 +129,9 @@ export default function useTimedStep() {
     function makeStep(coordinates) {
         //setMapPointValue(FREE_SLOT, player.position);
         //setMapPointValue(PLAYER, coordinates);
-        dispatch(setPointValue({ coords: position, value: EMPTY }));
-        dispatch(setPointValue({ coords: coordinates, value: PLAYER }));
+
+        //dispatch(setPointValue({ coords: position, value: EMPTY }));
+        //dispatch(setPointValue({ coords: coordinates, value: PLAYER }));
 
         //player.steps.push(player.position);
         dispatch(addStep(position));

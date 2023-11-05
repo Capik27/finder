@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
     // DEFAULT_FILL_COEF,
     // DEFAULT_SIZE_NUMBER,
+    DEFAULT_GAP_SIZE_PX,
     DEFAULT_POINT_SIZE_PX,
 } from "../utils/consts";
 import createMap from "../utils/coordinates/createMap";
@@ -9,6 +10,7 @@ import createMap from "../utils/coordinates/createMap";
 const initialState = {
     field: undefined, //createMap(DEFAULT_SIZE_NUMBER, DEFAULT_FILL_COEF),
     pointSizePx: DEFAULT_POINT_SIZE_PX,
+    gapSizePx: DEFAULT_GAP_SIZE_PX,
 };
 
 const mapSlice = createSlice({

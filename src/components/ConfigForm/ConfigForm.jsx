@@ -8,7 +8,8 @@ import {
     INPUT_SPEED_LIMIT,
     DEFAULT_FILL_COEF,
     FINISH,
-    PLAYER,
+    EMPTY,
+    //PLAYER,
 } from "../../utils/consts";
 import {
     setFillcoefValue,
@@ -92,7 +93,7 @@ export default function ConfigForm() {
 
         dispatch(resetPlayer());
         dispatch(setPlayerPosition(playerPosition));
-        dispatch(setPointValue({ coords: playerPosition, value: PLAYER }));
+        dispatch(setPointValue({ coords: playerPosition, value: EMPTY })); // чистим слот под игроком на всякий случай
         dispatch(setPointValue({ coords: finishPosition, value: FINISH }));
 
         // ENABLE START BUTTON

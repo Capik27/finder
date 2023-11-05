@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import "./index.scss";
 import Point from "../Point/Point";
+import Player from "../Player/Player";
 import React from "react";
 
 export default function Map() {
@@ -34,6 +35,7 @@ export default function Map() {
                         />
                     ))
                 )}
+            <Player key={`player`} id={`player`} />
         </ul>
     );
 }

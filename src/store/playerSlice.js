@@ -14,7 +14,10 @@ const playerSlice = createSlice({
     initialState,
     reducers: {
         resetPlayer(state) {
-            state = initialState;
+            state.position = initialState.position;
+            state.prevpos = initialState.prevpos;
+            state.steps = initialState.steps;
+            state.stepsPath = initialState.stepsPath;
         },
         setPlayerPosition(state, action) {
             state.position = action.payload;

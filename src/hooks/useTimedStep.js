@@ -79,12 +79,12 @@ export default function useTimedStep() {
 
                 // проверка на пересечение с прошлым шагом
                 const regExp = new RegExp(String(next_coords));
-                console.log(
-                    "REGEXP",
-                    regExp,
-                    prevsStringValue,
-                    regExp.test(prevsStringValue)
-                );
+                // console.log(
+                //     "REGEXP",
+                //     regExp,
+                //     prevsStringValue,
+                //     regExp.test(prevsStringValue)
+                // );
                 if (regExp.test(prevsStringValue)) {
                     past_slots.push(next_coords);
                     continue;
@@ -110,7 +110,32 @@ export default function useTimedStep() {
                 free_slots.push(next_coords);
             }
         }
-        const free = free_slots.length ? free_slots : past_slots;
+
+        // Если нет фри слотов для хода, даём пересечиния с прошлого хода
+        if (!free_slots.length) {
+            return { free: past_slots, full: full_slots };
+        }
+
+        // Находим наилучшие вектора движения (топ3)
+        let vectors = [];
+        if (prevpos) {
+            for (let i = 0; i < free_slots.length; i++) {
+                const [prev_x, prev_y] = prevpos[0];
+                const x_diff = Math.abs(free_slots[i][0] - prev_x);
+                const y_diff = Math.abs(free_slots[i][1] - prev_y);
+                const sum = x_diff + y_diff;
+                vectors.push({ value: sum, coords: free_slots[i] });
+            }
+        }
+        console.log("vectors", vectors);
+        if (vectors.length) {
+            vectors.sort((a, b) => a.value - b.value);
+            if (vectors.length > 3) vectors.splice(3);
+            vectors = vectors.map((v) => v.coords);
+            console.log("sort vectors", vectors);
+        }
+
+        const free = vectors.length ? vectors : free_slots;
         console.log("free/full", { free, full: full_slots });
         return { free, full: full_slots };
     }

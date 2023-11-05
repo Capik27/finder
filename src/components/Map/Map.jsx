@@ -28,6 +28,7 @@ export default function Map() {
                     row?.map((pointValue, j) => (
                         <Point
                             key={`${i}${j}`}
+                            id={`${i}${j}`}
                             value={pointValue}
                             style={pointStyle}
                         />
